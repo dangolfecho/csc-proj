@@ -13,15 +13,19 @@ def convert():
 def register_user():
     username_info=username.get()
     password_info=password.get()
+    def errordisp():
+        if username_info=="" or password_info=="":
+            tkkr.showerror('Error','All fields are required')
+            register()
+        else:
+            pass
+    errordisp()
     with open(username_info+".txt","w")as file:
         file.write(username_info+"\n")
         file.write(password_info)
     username_entry.delete(0,END)
     password_entry.delete(0,END)
     playsound("hello1.mp3")
-    
-    '''Label(login_frame1,text="Registration Success",fg="green",font=('calibri',11)).grid(row=4,column=1,padx=20,pady=10)
-    Label(login_frame1,text="")'''
     screen1.destroy()
 def register():
     global screen1
@@ -48,7 +52,7 @@ def register():
     lblpass=Label(login_frame1,text="password",image=pass_icon,compound=LEFT,font=("times new roman","20","bold")).grid(row=2,column=0,padx=20,pady=10)
     username_entry=Entry(login_frame1,textvariable=username)
     username_entry.grid(row=1,column=1,padx=20,pady=10)
-    password_entry=Entry(login_frame1,textvariable=password)
+    password_entry=Entry(login_frame1,show="*",textvariable=password)
     password_entry.grid(row=2,column=1,padx=20,pady=10)
     Button(login_frame1,text="Register",width="10",height="1",command=register_user).grid(row=3,column=1,padx=20,pady=10)
     login_frame1.mainloop()
