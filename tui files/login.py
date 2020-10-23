@@ -1,5 +1,7 @@
 import pickle
 import csv
+import keyboard
+import sys
 def reader():
     global l
     l=[]
@@ -92,6 +94,9 @@ def oldaccount():
         except ValueError:
             pass
 #main
-reader()
-opener()
+while True:
+    if keyboard.is_pressed("Esc"):
+        sys.exit
+    reader()
+    opener()
 
